@@ -3,6 +3,7 @@ import Bookspage from "./pages/Bookspage/Bookspage";
 import Homepage from "./pages/Homepage/Homepage";
 import Loginpage from "./pages/Loginpage/Loginpage";
 import Signuppage from "./pages/Signuppage/Signuppage";
+import UserInfo from "./pages/user/UserInfo";
 import Userbook from "./pages/userbooks/Userbook";
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/Homepage" element={<Homepage />} />
           <Route path="/Bookspage" element={<Bookspage />} />
           <Route path="/Userbook" element={<Userbook />} />
+          <Route path="/UserInfo" element={<UserInfo/>}/>
         </Route>
       </Routes>
     </div>

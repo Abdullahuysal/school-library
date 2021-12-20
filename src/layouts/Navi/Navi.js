@@ -4,6 +4,9 @@ import { BsFillInfoCircleFill } from "react-icons/bs";
 import { IoBook } from "react-icons/io5";
 import { ImExit } from "react-icons/im";
 export default function Navi() {
+  function exit(){
+    localStorage.clear();
+  }
   return (
     <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -22,15 +25,15 @@ export default function Navi() {
               </Nav.Link>
             </Nav>
             <Nav>
-              <NavDropdown    id="nav-dropdown" title={localStorage.getItem('Userinfo')} >
-                <NavDropdown.Item href="/Homepage" >
+              <NavDropdown    id="nav-dropdown" title={localStorage.getItem('studentName')} >
+                <NavDropdown.Item href="/UserInfo" >
                   Bilgilerim <BsFillInfoCircleFill/>
                   </NavDropdown.Item>
               
                 <NavDropdown.Item href="/Userbook">
                   Kitaplarım <IoBook/>
                 </NavDropdown.Item>
-                <NavDropdown.Item href="/Homepage">
+                <NavDropdown.Item onClick={exit} href="/Loginpage">
                   Çıkış Yap <ImExit/>
                 </NavDropdown.Item>
               </NavDropdown>

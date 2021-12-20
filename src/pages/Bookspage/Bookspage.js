@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Navi from "../../layouts/Navi/Navi";
 import BookService from "../../services/bookService";
-
+import Table from 'react-bootstrap/Table'
 export default function Bookspage() {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
     let bookService = new BookService();
-    bookService.getBooks().then((result) => setBooks(result.data));
+    bookService.getBooks().then((result) => setBooks(result.data.data));
   }, []);
 
   console.log(books);
@@ -15,9 +15,9 @@ export default function Bookspage() {
     <>
       <Navi />
 
-      <div style={{ marginTop: "2rem" }}>
-        <table class="table">
-          <thead class="thead-dark">
+      <div style={{ marginTop: "2rem" ,width: "80%", marginLeft: "10%" }}>
+        <Table  striped bordered hover variant="dark">
+          <thead >
             <tr>
               <th scope="col">Kitap Adı</th>
               <th scope="col">Kitap Yazarı</th>
@@ -25,17 +25,19 @@ export default function Bookspage() {
               <th scope="col">Kütüphane Adedi</th>
             </tr>
           </thead>
-          {books.map((book) => (
-            <tbody key={book.id} >
-              <tr>
-                <td>{book.BookName}</td>
-                <td>{book.Author}</td>
-                <td>{book.Pages}</td>
-                <td>{book.unitsInLibrary}</td>
+         
+            <tbody  >
+            {books.map((book) => (
+              <tr key={book.bookId}>
+                <td>{book.bookName}</td>
+                <td>{book.bookAuthor}</td>
+                <td>{book.bookPageCount}</td>
+                <td>{book.bookStockInLibrary}</td>
               </tr>
-            </tbody>
+         
           ))}
-        </table>
+             </tbody>
+        </Table>
       </div>
     </>
   );

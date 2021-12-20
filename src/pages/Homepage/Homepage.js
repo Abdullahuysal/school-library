@@ -7,21 +7,24 @@ import BookService from "../../services/bookService";
 export default function Homepage() {
   const [books, setBooks] = useState([]);
   const [search, setSearch] = useState([]);
-  let searchedBook;
+  let searchedBook=null;
   console.log(search);
+
 
   if (search) {
     searchedBook = books.filter((book) => {
-      let bookname = book.BookName;
+      let bookname = book.bookName;
       return bookname.includes(search) === true;
     });
   } else {
+      
   }
 
   useEffect(() => {
     let bookService = new BookService();
-    bookService.getBooks().then((result) => setBooks(result.data));
+    bookService.getBooks().then((result) => setBooks(result.data.data));
   }, []);
+  console.log(searchedBook);
   return (
     <div>
       <Navi />
@@ -36,13 +39,13 @@ export default function Homepage() {
   
         {searchedBook ? (
           searchedBook.map((book) => (
-            <Card  style={{ marginTop: "2rem", width: "50%", marginLeft: "25%" }}className="text-center" key={book.id}>
+            <Card  style={{ marginTop: "2rem", width: "50%", marginLeft: "25%" }}className="text-center" key={book.bookId}>
               <Card.Body>
-                <Card.Title>{book.BookName}</Card.Title>
-                <Card.Text>Kitap Yazarı:{book.Author}</Card.Text>
+                <Card.Title>{book.bookName}</Card.Title>
+                <Card.Text>Kitap Yazarı:{book.bookAuthor}</Card.Text>
                 <Card.Text>
-                  Sayfa Sayısı:{book.Pages}
-                  Kütüphane Adedi:{book.unitsInLibrary}
+                  Sayfa Sayısı:{book.bookPageCount}
+                  Kütüphane Adedi:{book.bookStockInLibrary}
                 </Card.Text>
                 <Button variant="success">Kitabı incele</Button>
               </Card.Body>
@@ -55,17 +58,3 @@ export default function Homepage() {
     </div>
   );
 }
-
-/*
-<Card style={{ marginTop: "5rem", width: "50%", marginLeft: "25%" }}>
-<Card.Header>Featured</Card.Header>
-<Card.Body>
-  <Card.Title>Special title treatment</Card.Title>
-  <Card.Text>
-    With supporting text below as a natural lead-in to additional
-    content.
-  </Card.Text>
-  <Button variant="primary">Go somewhere</Button>
-</Card.Body>
-</Card>
-*/

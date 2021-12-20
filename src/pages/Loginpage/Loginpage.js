@@ -3,23 +3,26 @@ import { Col, Container, Form, Row, Alert } from "react-bootstrap";
 import UserService from "../../services/userservice";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom'
-
 export default function Loginpage() {
   const [email, setEmail] = useState([]);
   const [password, setPassword] = useState([]);
   const [error, setError] = useState(false);
-  
   let navigate = useNavigate();
-  async function login(e) {
+   async function login(e) {
     e.preventDefault();
     let userService = new UserService();
-    let value = await userService.getUsers().then();
 
-    if (email===value.data[0].Useremail && password === value.data[0].UserPassword) {
-      const userdata=value.data[0].UserName;
-      localStorage.setItem("Userinfo",userdata)
+    var userdata={
+      "StudentEmail":email,
+      "StudentPassword":password}
+    let value=await userService.login(userdata);
+    // let value = await axios.post('https://localhost:44373/api/auth/login',userdata);
+    if(value.data.studentId!=null){
+      localStorage.setItem("studentId",value.data.studentId);
+      localStorage.setItem("studentName",value.data.studentName);
       navigate("/Homepage");
-    } else {
+    }
+    else{
       setError(true);
     }
   }
