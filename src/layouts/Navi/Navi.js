@@ -9,7 +9,7 @@ export default function Navi() {
   }
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="xxl" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="/Homepage" style={{ color: "white" }}>
             Kütüphane

@@ -4,8 +4,8 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter } from "react-router-dom";
-import "alertifyjs/build/css/alertify.min.css"
-
+import "alertifyjs/build/css/alertify.min.css";
+import 'semantic-ui-css/semantic.min.css';
 ReactDOM.render(
   <BrowserRouter>
     <App />

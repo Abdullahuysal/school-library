@@ -16,7 +16,6 @@ export default function Loginpage() {
       "StudentEmail":email,
       "StudentPassword":password}
     let value=await userService.login(userdata);
-    // let value = await axios.post('https://localhost:44373/api/auth/login',userdata);
     if(value.data.studentId!=null){
       localStorage.setItem("studentId",value.data.studentId);
       localStorage.setItem("studentName",value.data.studentName);
