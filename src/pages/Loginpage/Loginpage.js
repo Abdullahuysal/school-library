@@ -37,7 +37,7 @@ export default function Loginpage() {
             md={6}
             sm={12}
             className="p-5 m-auto shadow-sm rounded-lg">
-       {error? <Alert variant="danger" > <Alert.Heading>Kullanıcı Adı veya Şifre Hatalıdır</Alert.Heading></Alert>:<p></p>}
+       {error? <Alert variant="danger" > <Alert.Heading>E-mail veya Şifre Hatalıdır</Alert.Heading></Alert>:<p></p>}
           
             <Form onSubmit={login} 
     >

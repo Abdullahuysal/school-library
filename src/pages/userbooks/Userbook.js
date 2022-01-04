@@ -36,7 +36,6 @@ export default function Userbook() {
                 <h2> Kitap Teslim Etme Tarihi</h2>
                 <h3>{Moment(book.deliveryTime).format('DD-MM-YYYY')}</h3>
               </div>
-       
         </div>
    
       </div>

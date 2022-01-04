@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Input } from "reactstrap";
 import Navi from "../../layouts/Navi/Navi";
 import BookService from "../../services/bookService";
-import icon from "../../images/bookicon.jpg";
+import icon from "../../images/book2.jpg";
 import available from "../../images/available.png"
 import nonavailable from "../../images/nonavailable.png";
 export default function Homepage() {
@@ -37,7 +37,7 @@ export default function Homepage() {
 
       {searchedBook ? (
         searchedBook.map((book) => (
-          <div   key={book.bookId} style={{marginTop:"5px",border: '5px solid whitesmoke',borderRadius: '5px!important',color:"#212529"}} className="container rounded bg-white mt-5 mb-5">
+          <div   key={book.bookId} style={{maxHeight:"300px",marginTop:"5px",border: '5px solid whitesmoke',borderRadius: '5px!important',color:"#212529"}} className="container rounded bg-white mt-2 mb-2">
             <div className="row">
               <div
                 
