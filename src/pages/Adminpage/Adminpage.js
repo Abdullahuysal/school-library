@@ -1,87 +1,64 @@
-import React, { useState } from "react";
-import { Col, Container, Form, Row } from "react-bootstrap";
-import UserService from "../../services/userservice";
-import alertify from "alertifyjs";
+import React from "react";
+import studentimage from "../../images/admin1.jpg";
+import bookimage from "../../images/book3.jpg";
+import mailimage from "../../images/admin3.jpg";
+import { useNavigate } from "react-router-dom";
 export default function Adminpage() {
-  const [bookCategory, setbookCategory] = useState([]);
-  const [bookName, setbookName] = useState([]);
-  const [bookAuthor, setbookAuthor] = useState([]);
-  const [BookPageCount, setBookPageCount] = useState([]);
-  async function bookAdd(e) {
-    e.preventDefault();
-    let userService = new UserService();
-    var newBook = {
-      "BookCategory": bookCategory,
-      "BookName": bookName,
-      "BookAuthor": bookAuthor,
-      "BookPageCount":Number(BookPageCount),
-      "Bookavailability":true,
-    };
-    console.log(newBook);
-    let value = await userService.AdminaddBooks(newBook);
-    if (value.data!= null) {
-      alertify.success("Kitap başarılı bir Şekilde eklenmiştir");
-    } else {
-      alertify.error("Kitap Ekleme İşlemi Başarısız");
-    }
-  }
-
+  let navigate = useNavigate();
   return (
-    <>
-      <Container>
-        <h1 className="shadow-sm text-success mt-5 p-3 text-center rounded">
-          Kitap Ekle
-        </h1>
-        <Row className="mt-5">
-          <Col
-            lg={7}
-            md={6}
-            sm={12}
-            className="p-5 m-auto shadow-sm rounded-lg"
-          >
-            <Form onSubmit={bookAdd}>
-              <Form.Group>
-                <Form.Label>Kitap Kategorisi</Form.Label>
-                <Form.Control
-                  onChange={(e) => setbookCategory(e.target.value)}
-                  type="text"
-                  placeholder="Kitap kategorisi(Roman,şiir... vs)"
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Kitap Adı</Form.Label>
-                <Form.Control
-                  onChange={(e) => setbookName(e.target.value)}
-                  type="text"
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Kitap Yazarı</Form.Label>
-                <Form.Control
-                  onChange={(e) => setbookAuthor(e.target.value)}
-                  type="text"
-                />
-              </Form.Group>
-              <Form.Group>
-                <Form.Label>Kitap Sayfa Sayısı</Form.Label>
-                <Form.Control
-                  onChange={(e) => setBookPageCount(e.target.value)}
-                  type="number"
-                />
-              </Form.Group>
-
-              <Form.Group>
-                <button
-                  style={{ marginTop: "10px" }}
-                  className="btn btn-success"
-                >
-                  Kitap Ekle
-                </button>
-              </Form.Group>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
-    </>
+    <div>
+    <div className="container rounded  mt-5 mb-5">
+      <div style={{marginTop:"200px"}} className="card-group">
+      <div   className="card">
+        <div className="card">
+          <img className="card-img-top" src={studentimage} alt="book"></img>
+          <div className="card-body">
+            <button 
+             onClick={() => navigate("/Adminborrowedbook")}
+            style={{ marginTop: "10px",marginLeft:"60px" }} className="btn btn-success">
+              Öğrenci Kitap Verme 
+            </button>
+          </div>
+        </div>
+      </div>
+      <div   className="card">
+        <div className="card">
+          <img className="card-img-top" src={studentimage} alt="book"></img>
+          <div className="card-body">
+            <button 
+             onClick={() => navigate("/Admintakebook")}
+            style={{ marginTop: "10px",marginLeft:"60px" }} className="btn btn-success">
+              Öğrenci Kitap Teslim Alma 
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="card">
+        <div  className="card">
+          <img  className="card-img-top" src={bookimage} alt="book"></img>
+          <div className="card-body">
+            <button
+             onClick={() => navigate("/Adminadd")}
+            style={{ marginTop: "10px",marginLeft:"60px" }} className="btn btn-success">
+              Kitap Ekleme işlemleri
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="card">
+        <div className="card">
+          <img style={{maxHeight:"320px"}} className="card-img-top" src={mailimage} alt="book"></img>
+          <div className="card-body">
+            <button 
+            onClick={() => navigate("/AdminsendEmail")}
+            style={{ marginTop: "10px",marginLeft:"60px" }} className="btn btn-success">
+              Öğrenci Mail Gönderme
+            </button>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    </div>
   );
 }

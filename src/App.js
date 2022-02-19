@@ -8,6 +8,10 @@ import UserInfo from "./pages/user/Userinfo";
 import Adminpage from "./pages/Adminpage/Adminpage";
 import Adminloginpage from "./pages/Adminpage/Adminloginpage";
 import BookDetailspage from "./pages/Bookspage/BookDetailspage";
+import Adminadd from "./pages/Adminpage/Adminadd";
+import AdminsendEmail from "./pages/Adminpage/AdminsendEmail";
+import Adminborrowedbook from "./pages/Adminpage/Adminborrowedbook";
+import Admintakebook from "./pages/Adminpage/Admintakebook";
 function App() {
   return (
     <div className="App">
@@ -23,6 +27,10 @@ function App() {
           <Route path="/Adminpage" element={<Adminpage />} />
           <Route path="/Adminloginpage" element={<Adminloginpage />} />
           <Route path="/BookDetailspage" element={<BookDetailspage />} />
+          <Route path="/Adminadd" element={<Adminadd />} />
+          <Route path="/AdminsendEmail" element={<AdminsendEmail />} />
+          <Route path="/Adminborrowedbook" element={<Adminborrowedbook/>} />
+          <Route path="/Admintakebook" element={<Admintakebook/>} />
 
         </Route>
       </Routes>

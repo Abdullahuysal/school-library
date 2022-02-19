@@ -11,9 +11,25 @@ export default class UserService {
     var url = `https://localhost:44373/api/students/getstudentinfo?studentId=${payload}`;
     return axios.get(url);
   }
+  getUserInfobynumber(payload){
+    return axios.get(`https://localhost:44373/api/borrowedbooks/getinfo?studentNumber=${payload}`);
+  }
 
   AdminaddBooks(payload) {
     return axios.post("https://localhost:44373/api/admins/add", payload);
+  }
+
+  AdminsendEmail(payload){
+    return axios.get(`https://localhost:44373/api/borrowedbooks/sendemail?studentNumber=${payload}`);
+  }
+  AdminaddBorrowedBooks(payload){
+    return axios.post("https://localhost:44373/api/borrowedbooks/giveborrowedbook",payload);
+  }
+  AdminTakeBorrowedBooks(payload){
+    return axios.get(`https://localhost:44373/api/borrowedbooks/takebook?studentNumber=${payload}`);
+  }
+  AdmingetBorrowedBooks(payload){
+    return axios.get(`https://localhost:44373/api/borrowedbooks/getborrowedbook?studentNumber=${payload}`);
   }
 
 }
